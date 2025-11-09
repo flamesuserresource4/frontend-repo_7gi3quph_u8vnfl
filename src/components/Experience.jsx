@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
 import { Film, ShieldCheck, ServerCog, Repeat } from 'lucide-react';
 
 const roles = [
@@ -33,33 +33,33 @@ const roles = [
 ];
 
 export default function Experience() {
+  const scroller = useRef(null);
+
   return (
-    <section id="experience" className="mx-auto max-w-6xl px-6 py-24 text-white">
-      <h2 className="mb-8 text-3xl font-semibold">Experience</h2>
-      <div className="relative">
-        <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-teal-500/40 via-sky-500/40 to-purple-500/40" />
-        <div className="space-y-6">
-          {roles.map(({ company, role, icon: Icon, accent, desc }, i) => (
-            <motion.div
-              key={company}
-              className="relative ml-10 rounded-xl border border-white/10 bg-slate-900/60 p-5 backdrop-blur-md"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-            >
-              <div className={`pointer-events-none absolute -left-9 top-5 h-5 w-5 rounded-full bg-gradient-to-r ${accent}`} />
-              <div className="flex items-start gap-4">
-                <div className="rounded-lg bg-white/5 p-2"><Icon className="h-5 w-5 text-teal-300" /></div>
-                <div>
-                  <div className="text-lg font-medium">{company}</div>
-                  <div className="text-sm text-slate-400">{role}</div>
-                  <p className="mt-2 text-slate-300">{desc}</p>
-                </div>
+    <section id="experience" className="mx-auto max-w-[100vw] overflow-hidden px-0 py-24 text-white">
+      <div className="mx-auto max-w-6xl px-6">
+        <h2 className="mb-6 text-3xl font-semibold">Experience</h2>
+      </div>
+      <div
+        ref={scroller}
+        className="no-scrollbar relative flex w-full snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-4"
+      >
+        {roles.map(({ company, role, icon: Icon, accent, desc }) => (
+          <div
+            key={company}
+            className="group relative h-64 w-[80%] min-w-[320px] max-w-md snap-center overflow-hidden rounded-xl border border-white/10 bg-slate-900/70 p-5 backdrop-blur-md"
+          >
+            <div className={`pointer-events-none absolute inset-0 -z-0 bg-gradient-to-r ${accent} opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
+            <div className="flex items-start gap-4">
+              <div className="rounded-lg bg-white/5 p-2"><Icon className="h-5 w-5 text-teal-300" /></div>
+              <div>
+                <div className="text-lg font-medium">{company}</div>
+                <div className="text-sm text-slate-400">{role}</div>
+                <p className="mt-2 text-slate-300">{desc}</p>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

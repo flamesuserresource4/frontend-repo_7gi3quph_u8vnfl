@@ -2,6 +2,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
+import FooterTerminal from './components/FooterTerminal';
 
 export default function App() {
   return (
@@ -24,17 +25,7 @@ export default function App() {
         <Projects />
       </main>
 
-      <footer className="border-t border-white/10 py-10 text-slate-400">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="font-mono text-xs">
-            $ whoami
-            <div className="pl-4 text-slate-200">→ Vidit Khazanchi</div>
-          </div>
-          <div className="mt-3 font-mono text-xs">
-            $ system status: <span className="text-teal-300">active</span>
-          </div>
-        </div>
-      </footer>
+      <FooterTerminal />
     </div>
   );
 }
