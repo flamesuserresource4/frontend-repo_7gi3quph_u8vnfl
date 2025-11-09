@@ -1,28 +1,40 @@
-import { useState } from 'react'
+import Hero from './components/Hero';
+import About from './components/About';
+import Experience from './components/Experience';
+import Projects from './components/Projects';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen w-full bg-[#0b0d10] font-mono">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3 text-slate-200">
+          <a href="#" className="text-sm tracking-widest text-teal-300">VIDIT</a>
+          <nav className="flex items-center gap-5 text-xs">
+            <a href="#about" className="hover:text-white">About</a>
+            <a href="#experience" className="hover:text-white">Experience</a>
+            <a href="#projects" className="hover:text-white">Projects</a>
+          </nav>
         </div>
-      </div>
-    </div>
-  )
-}
+      </header>
 
-export default App
+      <main>
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+      </main>
+
+      <footer className="border-t border-white/10 py-10 text-slate-400">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="font-mono text-xs">
+            $ whoami
+            <div className="pl-4 text-slate-200">→ Vidit Khazanchi</div>
+          </div>
+          <div className="mt-3 font-mono text-xs">
+            $ system status: <span className="text-teal-300">active</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
